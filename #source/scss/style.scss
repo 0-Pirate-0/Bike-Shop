@@ -62,19 +62,25 @@ body {
 
 .header.fixed-top {
     padding-bottom: 2.1875rem;
-    background: linear-gradient(#eaeaf1, #d9d6df);
     position: fixed;
+    z-index: 1100;
+    @media screen and (max-width: 960px) {
+        padding: 1rem 0;
+    }
 }
 
 .header__inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    height: 100px;
 }
 
 .header__logo {
     display: none;
     cursor: pointer;
+    z-index: 1400;
 }
 .header__logo.active {
     display: block;
@@ -82,14 +88,32 @@ body {
 
 /* Nav */
 .nav {
-    text-transform: uppercase;
     margin: 0 auto;
+    text-transform: uppercase;
+    @media screen and (max-width: 960px) {
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        overflow: auto;
+        background: #fff;
+        padding: 170px 15px 20px 25px;
+        transition: top .4s linear;
+        &.active {
+            top: 0;
+        }
+        &__list li {
+            display: block;
+            margin-left: 0;
+            margin-bottom: 20px;
+        }
+    }
 }
 
 .nav__link {
     display: inline;
     margin: 0 3rem;
-
+    z-index: 1400;
     .before:before {
         content: "";
         display: inline-block;
@@ -103,7 +127,7 @@ body {
 
     &--logo {
         @media screen and (max-width: 960px) {
-            display: none;
+            display: none !important;
         }
     }
 
@@ -119,6 +143,52 @@ body {
     }
 }
 
+/* Nav-toggle */
+.nav_toggle {
+    display: none;
+    @media screen and (max-width: 960px) {
+        display: block;
+        position: relative;
+        width: 30px;
+        height: 20px;
+        z-index: 1400;
+        & span {
+            position: absolute;
+            background: #000;
+            width: 100%;
+            height: 2px;
+            left: 0;
+            top: 9px;
+            transition: transform .3s linear;
+        }
+        &::before, &::after {
+            content: "";
+            background: #000;
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            left: 0;
+            transition: transform .3s linear;
+        }
+        &::before {
+            top: 0;
+        }
+        &::after {
+            bottom: 0;
+        }
+        &.active::before{
+            transform: rotate(45deg);
+            top: 9px;
+        }
+        &.active::after{
+            transform: rotate(-45deg);
+            bottom: 9px;
+        }
+        &.active span {
+            transform: scale(0);
+        }
+    }
+}
 /* about */
 .about {
     padding: 8.75rem 0 10rem;
@@ -213,7 +283,7 @@ body {
             }
 
             @media screen and (max-width: 640px) {
-                position: sticky;
+                position: static;
             }
         }
     }

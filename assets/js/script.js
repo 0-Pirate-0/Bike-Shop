@@ -1,6 +1,5 @@
 $(document).ready(function(){
     const windowWidth = $(window).width();
-    console.log(windowWidth)
     var header = $('.header');
     var headerLogo = $('.header__logo');
     //Header-fixed
@@ -17,6 +16,19 @@ $(document).ready(function(){
     } else {
         headerLogo.removeClass('active')
     }
+    //Nav-toggle
+    $('.nav_toggle').click(function(event){
+        $('.nav_toggle, .nav').toggleClass('active');
+    });
+     /* Collapse */
+     $("[data-collapse]").on("click", function(event) {
+         event.preventDefault();
+         
+         var $this = $(this), 
+             blockId = $this.data("collapse");
+         
+         $this.toggleClass("active");
+     }); 
     // Work
     if(windowWidth <= 960 & windowWidth >= 640) {
         $('.work__block--6 > img').attr('src', 'assets/images/details/6-1.jpg');
