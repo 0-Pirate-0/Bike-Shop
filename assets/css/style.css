@@ -79,13 +79,13 @@ h1, h2, h3, h4, h5, h6 {
 		height: auto;
 }
 
-.description__inner {
+.about__inner {
 		width: 100%;
 		margin: 0 auto;
 		text-align: center;
 }
 
-.work__title, .description__title {
+.work__title, .about__title {
 		font-size: 1.125em;
 		font-weight: 700;
 		text-transform: uppercase;
@@ -124,10 +124,25 @@ body {
 		padding-top: 2.1875rem;
 }
 
+.header.fixed-top {
+		padding-bottom: 2.1875rem;
+		background: linear-gradient(#eaeaf1, #d9d6df);
+		position: fixed;
+}
+
 .header__inner {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+}
+
+.header__logo {
+		display: none;
+		cursor: pointer;
+}
+
+.header__logo.active {
+		display: block;
 }
 
 /* Nav */
@@ -150,6 +165,11 @@ body {
 		vertical-align: middle;
 		left: -40px;
 }
+@media screen and (max-width: 960px) {
+		.nav__link--logo {
+				display: none;
+		}
+}
 .nav__link a {
 		font-size: 0.8125em;
 		font-weight: 700;
@@ -157,25 +177,23 @@ body {
 }
 .nav__link img {
 		display: inline-block;
-		width: 94px;
-		height: auto;
 		vertical-align: middle;
 }
 
-/* description */
-.description {
+/* about */
+.about {
 		padding: 8.75rem 0 10rem;
 }
 
-.description__inner {
+.about__inner {
 		max-width: 1080px;
 }
 
-.description__title {
+.about__title {
 		margin: 35px 0;
 }
 
-.description__text {
+.about__text {
 		color: #848688;
 }
 
@@ -244,6 +262,17 @@ body {
 				grid-area: wb6;
 		}
 }
+@media screen and (max-width: 960px) {
+		.work__block--6 > img {
+				position: absolute;
+				bottom: 0;
+		}
+}
+@media screen and (max-width: 640px) {
+		.work__block--6 > img {
+				position: sticky;
+		}
+}
 .work__block--7 {
 		background: url(../images/details/7.jpg) top center no-repeat;
 		background-size: cover;
@@ -306,6 +335,11 @@ body {
 		right: 0;
 }
 
+/* Slider */
+.slider {
+		padding: 125px 0;
+}
+
 /* Shop */
 .shop {
 		display: grid;
@@ -327,7 +361,7 @@ body {
 				grid-template-areas: "si1 si2" "si3 si3" "si4 si5" "si4 si5" "si6 si6" "si7 si8";
 		}
 }
-@media screen and (max-width: 640px) {
+@media (max-width: 640px) {
 		.shop {
 				grid-template-areas: "si1" "si2" "si3" "si4" "si5" "si6" "si7" "si8";
 		}
@@ -413,6 +447,7 @@ body {
 		color: #fff;
 		margin: 95px auto;
 		padding: 20px 45px;
+		cursor: pointer;
 		text-transform: uppercase;
 		text-decoration: none;
 		border: 2px solid #97999c;
